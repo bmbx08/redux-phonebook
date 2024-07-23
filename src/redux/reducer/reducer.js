@@ -1,11 +1,10 @@
 let initialState = {
   contactList: [],
-  searchList: [],
-  searched: false,
+  keyword: "",
 };
 
 function reducer(state = initialState, action) {
-    const {type,payload}=action; //코딩 단순화 위해 es6 destructuring 문법 사용
+  const {type, payload} = action; //코딩 단순화 위해 es6 destructuring 문법 사용
   switch (type) {
     case "ADD_CONTACT":
       return {
@@ -15,16 +14,10 @@ function reducer(state = initialState, action) {
           {name: payload.name, phoneNumber: payload.phoneNumber},
         ],
       };
-    case "SET_SEARCH_LIST":
-        return{
-            ...state, searchList:payload
-        }
-    case "SEARCHED_COMPLETE":
-        return{
-            ...state, searched:payload
-        }
+    case "SEARCH_BY_USERNAME":
+      return {...state, keyword: payload.keyword};
     default:
-        return {...state};
+      return {...state};
   }
 }
 

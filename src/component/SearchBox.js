@@ -3,25 +3,13 @@ import {Button, Col, Form, Row} from "react-bootstrap";
 import {useDispatch, useSelector} from "react-redux";
 
 const SearchBox = () => {
-  const [searchWord, setSearchWord] = useState("");
-
+  const [keyword, setKeyword] = useState("");
   const dispatch = useDispatch();
-
   const contactList = useSelector((state) => state.contactList);
-
-  const setSearch = (event) => {
-    console.log(event.target.value);
-    setSearchWord(event.target.value);
-  };
 
   const search = (event) => {
     event.preventDefault();
-    let searchResult = contactList.filter((contact) => {
-      return contact.name.includes(`${searchWord}`);
-    });
-    console.log(searchResult);
-    dispatch({type: "SET_SEARCH_LIST", payload: searchResult});
-    dispatch({type: "SEARCHED_COMPLETE", payload: true});
+    dispatch({ type: "SEARCH_BY_USERNAME", payload: { keyword } });
   };
 
   return (
@@ -32,7 +20,7 @@ const SearchBox = () => {
             <Form.Control
               type="text"
               placeholder="이름을 입력해주세요"
-              onChange={setSearch}
+              onChange={(event)=>setKeyword(event.target.value)}
             />
           </Col>
           <Col lg={2}>

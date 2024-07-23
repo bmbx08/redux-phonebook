@@ -8,17 +8,17 @@ const ContactList = () => {
     const [finalList,setFinalList]=useState([]);
 
     const contactList=useSelector(state=>state.contactList);
-    const searchList=useSelector(state=>state.searchList);
-    const searchedComplete=useSelector(state=>state.searched);
+    const keyword=useSelector(state=>state.keyword);
 
     useEffect(()=>{
-        console.log(searchedComplete);
-        if(searchedComplete===true){
-            setFinalList(searchList);
-        } else{
+        if (keyword !== "") {
+            let list = contactList.filter((item) => item.name.includes(keyword));
+      
+            setFinalList(list);
+          } else {
             setFinalList(contactList);
-        }
-    },[contactList,searchList])
+          }
+        }, [keyword, contactList]);
 
   return (
     <div>
