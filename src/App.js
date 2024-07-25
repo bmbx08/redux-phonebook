@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import { Col, Container, Row } from 'react-bootstrap';
@@ -30,3 +29,8 @@ function App() {
 }
 
 export default App;
+
+
+//연락처 카드로 출력하기
+//M,F 라디오 버튼 넣고 성별벼로로 남자,여자 사진 나오게 하기
+//즐겨찾기 버튼 넣고 누르면 즐겨찾기 항목에 추가, 즐겨찾기 누르면 즐겨찾기 아이템만 표시

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import SearchBox from './SearchBox'
 import ContactItem from './ContactItem'
 import { useSelector } from 'react-redux'
+import { Col, Row } from 'react-bootstrap'
 
 const ContactList = () => {
 
@@ -29,9 +30,13 @@ const ContactList = () => {
       {searchList.map((contact)=>(
         <ContactItem contact={contact}/>
       ))} */}
-      {finalList.map((contact)=>(
-        <ContactItem contact={contact}/>
-      ))}
+      <Row>
+        {finalList.map((contact)=>(
+          <Col lg={3}>
+          <ContactItem contact={contact}/>
+          </Col>
+        ))}
+      </Row>
     </div>
   )
 }

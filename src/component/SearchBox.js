@@ -8,8 +8,10 @@ const SearchBox = () => {
   const contactList = useSelector((state) => state.contactList);
 
   const search = (event) => {
+    setKeyword(event.target.value);
+    let key=event.target.value;
     event.preventDefault();
-    dispatch({ type: "SEARCH_BY_USERNAME", payload: { keyword } });
+    dispatch({ type: "SEARCH_BY_USERNAME", payload: { key } });
   };
 
   return (
@@ -20,13 +22,16 @@ const SearchBox = () => {
             <Form.Control
               type="text"
               placeholder="이름을 입력해주세요"
-              onChange={(event)=>setKeyword(event.target.value)}
+              onChange={search}
             />
           </Col>
           <Col lg={2}>
             <Button type="submit">찾기</Button>
           </Col>
         </Row>
+        <div className="keyword-section">
+          검색 결과:<span className="keyword-style">{keyword}</span>
+        </div>
       </Form>
     </div>
   );

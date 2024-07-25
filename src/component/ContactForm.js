@@ -5,13 +5,14 @@ import {useDispatch} from "react-redux";
 const ContactForm = () => {
   const [name, setName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState(0);
+  const [gender,setGender]=useState("Male");
   const dispatch = useDispatch();
 
   const addContact = (event) => {
     event.preventDefault();
-    dispatch({type: "ADD_CONTACT", payload: {name, phoneNumber}}); // payload:{name:name, phoneNumber:phoneNumber}과 같음
-    dispatch({type: "SEARCHED_COMPLETE", payload: false});
-  };
+    let ID='_' + Math.random().toString(36).substr(2, 9);
+    dispatch({type: "ADD_CONTACT", payload: {name, phoneNumber,gender,ID}}); // payload:{name:name, phoneNumber:phoneNumber}과 같음
+  }
 
   return (
     <div>
@@ -33,6 +34,26 @@ const ContactForm = () => {
             onChange={(event) => setPhoneNumber(event.target.value)}
           />
         </Form.Group>
+        <div className="mb-3">
+        <Form.Check
+            inline
+            label="Male"
+            name="group1"
+            type="radio"
+            id={`Male`}
+            onChange={(event)=>setGender(event.target.id)}
+          />
+          <Form.Check
+            inline
+            label="Female"
+            name="group1"
+            type="radio"
+            id={`Female`}
+            onChange={(event)=>setGender(event.target.id)}
+          />
+        </div>
+        
+
         <Button variant="primary" type="submit">
           추가
         </Button>

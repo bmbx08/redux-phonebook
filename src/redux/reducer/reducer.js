@@ -11,11 +11,11 @@ function reducer(state = initialState, action) {
         ...state,
         contactList: [
           ...state.contactList,
-          {name: payload.name, phoneNumber: payload.phoneNumber},
+          {name: payload.name, phoneNumber: payload.phoneNumber, gender: payload.gender, ID: payload.ID, isFavorite: false},
         ],
       };
     case "SEARCH_BY_USERNAME":
-      return {...state, keyword: payload.keyword};
+      return {...state, keyword: payload.key};
     default:
       return {...state};
   }

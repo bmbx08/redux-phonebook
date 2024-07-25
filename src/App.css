@@ -1,3 +1,37 @@
+@font-face{
+  font-family: 'NanumB';
+  font-style: 'normal';
+  font-weight: 400;
+  src: url('../public/fonts/NanumSquareB.otf');
+}
+
+@font-face{
+  font-family: 'NanumR';
+  font-style: 'normal';
+  font-weight: 400;
+  src: url('../public/fonts/NanumSquareR.otf');
+}
+
+@keyframes jump-shaking {
+  0% { transform: translateX(0) }
+  25% { transform: translateY(-9px) }
+  35% { transform: translateY(-9px) rotate(17deg) }
+  55% { transform: translateY(-9px) rotate(-17deg) }
+  65% { transform: translateY(-9px) rotate(17deg) }
+  75% { transform: translateY(-9px) rotate(-17deg) }
+  100% { transform: translateY(0) rotate(0) }
+}
+
+@keyframes skew-y-shake {
+  0% { transform: skewY(-15deg); }
+  5% { transform: skewY(15deg); }
+  10% { transform: skewY(-15deg); }
+  15% { transform: skewY(15deg); }
+  20% { transform: skewY(0deg); }
+  100% { transform: skewY(0deg); }  
+}
+
+
 .title{
   text-align: center;
 }
@@ -8,4 +42,72 @@
 
 .contact-item{
   margin-top: 1em;
+}
+
+.contact-box{
+  position:relative;
+  text-align: center;
+  padding: 1em;
+  border-radius: 15px;
+  background-color: lightgray;
+  margin-bottom: 1em;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.contact-box:hover{
+  transform:scale(1.1);
+  transition: all 0.2s ease 0s;
+}
+
+.no-fav,.fav{
+  position:absolute;
+  right:12px;
+  top:0px;
+}
+
+.no-fav:hover{
+  transform: scale(1.2);
+}
+
+.fav:hover{
+  animation: jump-shaking 0.83s;
+  transform: scale(1.2);
+}
+
+.contact-box div,img{
+  margin-bottom: 10px;
+}
+
+.contact-name{
+  font-family: 'NanumB';
+}
+
+.contact-number{
+  font-family: 'NanumB';
+} 
+
+.contact-icon{
+  margin:0 0.5em;
+}
+
+.contact-icon:hover{
+  transform: scale(1.3);
+}
+
+.phone-icon:hover{
+  animation: jump-shaking 0.83s infinite;
+
+}
+
+.message-icon:hover{
+  animation: skew-y-shake 1.3s infinite;  
+}
+
+.keyword-section{
+  margin-top: 10px;
+}
+
+.keyword-style{
+  margin-left:5px;
+  color:red;
 }
